@@ -1,0 +1,9 @@
+.word input {
+  display: inline-block;
+  width: 40px;
+  margin: 5px;
+}
+
+#btn-group-word {
+  margin: 10px;
+}
