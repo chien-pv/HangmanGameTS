@@ -31,7 +31,7 @@ let arr: string[] = [
 
 let listData: string = ``;
 arr.forEach(function (item) {
-  listData += `<button type="button" class="btn btn-outline-dark">${item}</button>
+  listData += `<button type="button" class="btn btn-outline-dark btn-chose">${item}</button>
     `;
 });
 
@@ -83,8 +83,24 @@ function* draw() {
 }
 let drawstep = draw();
 
-let drowstep = document.getElementById("drowstep") as HTMLElement;
+let arrListWord: string[] = ["ANY", "HELLO", "STRING", "NUMBER"];
 
-drowstep.onclick = function () {
-  drawstep.next();
-};
+let tu: string[] = arrListWord[1].split("");
+console.log(tu);
+let listTus: string = ``;
+tu.forEach(function (item) {
+  listTus += `<input data-value="${item}" class="form-control" disabled>`;
+});
+
+let wordContent = document.getElementById("word-content") as HTMLElement;
+
+wordContent.innerHTML = listTus;
+
+let btnChose = document.getElementsByClassName("btn-chose") as HTMLCollection;
+
+for (let index = 0; index < btnChose.length; index++) {
+  let btnChosei = btnChose[index] as HTMLElement;
+  btnChosei.onclick = function () {
+    drawstep.next();
+  };
+}

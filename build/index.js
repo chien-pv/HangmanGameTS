@@ -30,7 +30,7 @@ let arr = [
 ];
 let listData = ``;
 arr.forEach(function (item) {
-    listData += `<button type="button" class="btn btn-outline-dark">${item}</button>
+    listData += `<button type="button" class="btn btn-outline-dark btn-chose">${item}</button>
     `;
 });
 btnGroupWord.innerHTML = listData;
@@ -79,7 +79,19 @@ function* draw() {
     yield false;
 }
 let drawstep = draw();
-let drowstep = document.getElementById("drowstep");
-drowstep.onclick = function () {
-    drawstep.next();
-};
+let arrListWord = ["ANY", "HELLO", "STRING", "NUMBER"];
+let tu = arrListWord[1].split("");
+console.log(tu);
+let listTus = ``;
+tu.forEach(function (item) {
+    listTus += `<input data-value="${item}" class="form-control" disabled>`;
+});
+let wordContent = document.getElementById("word-content");
+wordContent.innerHTML = listTus;
+let btnChose = document.getElementsByClassName("btn-chose");
+for (let index = 0; index < btnChose.length; index++) {
+    let btnChosei = btnChose[index];
+    btnChosei.onclick = function () {
+        drawstep.next();
+    };
+}
